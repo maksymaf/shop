@@ -25,10 +25,20 @@ async function renderProducts() {
         // product description
         const productDescription = document.createElement('p');
         productDescription.innerHTML = item.description;
+        // product price
+        const productPrice = document.createElement('p');
+        productPrice.style.color = 'green';
+        productPrice.style.fontSize = '1.5em';
+        productPrice.style.fontWeight = '700';
+        productPrice.style.marginTop = '10px';
+        productPrice.innerHTML = '$' + item.price;
+        // add-to-card btn
+        
 
         productItem.appendChild(productImage);
         productItem.appendChild(productTitle);
         productItem.appendChild(productDescription);
+        productItem.appendChild(productPrice);
         productContainer.appendChild(productItem);
     });
 }
@@ -40,6 +50,9 @@ const attachProductPopUpLogic = async () => {
     const productTitle = document.querySelector('.pop-up-product-title');
     const productImage = document.querySelector('.pop-up-product-image');
     const productDescription = document.querySelector('.pop-up-product-description');
+    const priceContainer = document.querySelector('.price-container');
+    priceContainer.classList.add('price-container');
+    const productPrice = document.querySelector('.product-price');
 
     const close = document.querySelector('.pop-up-header i');
     close.addEventListener('click', (e) => {
@@ -54,6 +67,7 @@ const attachProductPopUpLogic = async () => {
                                     productTitle.innerHTML = data.title;
                                     productImage.src = data.image;
                                     productDescription.innerHTML = data.description;
+                                    productPrice.innerHTML = '$' + data.price;
                                 })
         });
     });

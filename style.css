@@ -15,22 +15,20 @@
     align-items: center;
 }
 
-.products-container{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 50px;
-}
+.products-container {
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: repeat(4, 250px);
+    gap: 100px;
+  }
 
 .product-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
-    height: 400px;
+    width: 250px;
+    height: 440px;
     text-align: center;
     margin-bottom: 50px;
     border-radius: 20px;
@@ -46,8 +44,8 @@
 }
   
 .product-item > img, .pop-up-product-image{
-    height: 200px;
-    width: 200px;
+    height: 190px;
+    width: 190px;
     object-fit: contain;
 }
 
@@ -56,6 +54,7 @@
     -webkit-line-clamp: 3; 
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: 57.6px;
 }
 
 .header{
@@ -96,8 +95,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 550px;
-    height: 550px;
+    width: clamp(250px, 80vw, 500px);
+    height: clamp(600px, 90vh, 900px);
     border-radius: 20px;
     background-color: #fff;
     display: none;
@@ -130,4 +129,60 @@
 
 .pop-up-header i:hover{
     transform: rotate(90deg);
+}
+
+.price-container{
+    display: flex;
+}
+
+.product-price{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: green;
+}
+
+.price-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-to-cart-button{
+    background: green;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    font-size: 2em;
+}
+
+@media (max-width: 1326px) {
+    .products-container{
+        grid-template-columns: repeat(3, 250px);
+    }
+}
+
+@media (max-width: 972px) {
+    .products-container{
+        grid-template-columns:  repeat(2, 250px);
+    }
+}
+
+@media (max-width: 628px){
+    .products-container{
+        grid-template-columns: repeat(1, 250px);
+    }
+
+    .product-item > img{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 500px){
+    .navigation-container{
+        display: none;
+    }
 }
